@@ -15,7 +15,7 @@
   
   - name: initilize postgres
     command: "postgresql-setup initdb"
-    when: postgres_path == false
+    when:  not postgres_path.stat.exists 
 
   - name: start postgres
     service:
