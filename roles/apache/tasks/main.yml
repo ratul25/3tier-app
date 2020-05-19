@@ -4,8 +4,18 @@
     yum:
       name: httpd
       state: latest
-  - name: enable apache at boot
+  - name: Start & enable apache
     service:
       name: httpd
+      state: started
       enabled: yes
+  - name: copy static index.html to apache directory 
+    template:
+      src: index.html.j2
+      dest: /var/www/html/index.html
+      mode: 0644
+  - name: Start & enable apache
+    service:
+      name: httpd
+      state: restarted
 
