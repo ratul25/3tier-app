@@ -1,4 +1,7 @@
 ---
+- name: Import In-memory inventory play
+  import_playbook: in-memory-inventory.yml
+
 - name: configure repos
   hosts: all
   gather_facts: false
